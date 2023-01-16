@@ -1,0 +1,23 @@
+145-Binary Tree Postorder Traversal
+# https://leetcode.com/problems/binary-tree-postorder-traversal/description/
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        def dfs(node):
+            if node:
+                dfs(node.left)
+                dfs(node.right)
+                res.append(node.val)
+        dfs(root)
+        return res
+
+#  Time complexity: O(N), N is numbers of nodes in tree
+#  Space complexity: O(N), N is numbers of nodes in tree 
+# (average case is O(logN), height of tree)
